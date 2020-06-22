@@ -24,8 +24,7 @@ jobs:
         run: bash <(curl -s https://codecov.io/bash) -X gcov -J 'IterableSDK' -J 'IterableAppExtensions'
 
       - name: Upload coverage report to codeclimate.com
-        uses: paambaati/codeclimate-action@v2.6.0
-        env:
-          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-        with:
-          coverageCommand: xcodebuild test -project swift-sdk.xcodeproj -scheme swift-sdk -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 11' -enableCodeCoverage YES CODE_SIGNING_REQUIRED=NO
+        run: |
+          # ${{ secrets.CC_TEST_REPORTER_ID }}
+          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-darwin-amd64
+          ls
